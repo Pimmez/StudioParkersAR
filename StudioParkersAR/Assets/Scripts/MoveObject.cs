@@ -33,7 +33,7 @@ public class MoveObject : MonoBehaviour
                     // objectOfChoose.transform.localPosition = Vector3.Lerp(transform.localPosition, Input.GetTouch(0).position, smoothTime);
                     objects.transform.position = Vector3.MoveTowards(objects.transform.position, Input.GetTouch(0).position, Time.deltaTime * smoothTime);
                     Debug.Log(hit.collider.gameObject.transform.position);
-                    Debug.Log("Hit Object");
+                    
                     Debug.DrawLine(transform.position, hit.transform.position, Color.red);
                     
                 }

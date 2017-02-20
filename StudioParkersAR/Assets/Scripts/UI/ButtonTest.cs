@@ -15,15 +15,24 @@ public class ButtonTest : MonoBehaviour {
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(mainMenu);
+        if(Application.platform == RuntimePlatform.Android)
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(mainMenu);
+            }
+            else
+            {
+                SceneManager.LoadScene(mainMenu);
+            }
+
     }
 
     public void OpenURL()
     {
         #if UNITY_EDITOR
-            Application.OpenURL("www.studioparkers.nl");
+            Application.OpenURL("https://www.studioparkers.nl");
         #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
-            Application.OpenURL("www.studioparkers.nl");
+            Application.OpenURL("https://www.studioparkers.nl");
         #endif
     }
 
