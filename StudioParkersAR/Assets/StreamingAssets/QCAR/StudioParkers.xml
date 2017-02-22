@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="Parkers_Fish" size="512.000000 329.142853" />
-    <ImageTarget name="Parkers_Bunny" size="512.000000 330.038086" />
-    <ImageTarget name="Parkers_Frog" size="512.000000 333.102814" />
-    <ImageTarget name="Parkers_Duck" size="512.000000 330.202911" />
+    <ImageTarget name="wshggggggggg" size="512.000000 331.130432" />
+    <ImageTarget name="Parkers_Duck" size="360.000000 234.782608" />
+    <ImageTarget name="Parkers_Frog" size="552.000000 360.000000" />
+    <ImageTarget name="Parkers_Cricket" size="552.000000 360.000000" />
+    <ImageTarget name="Parkers_Bunny" size="552.000000 360.000000" />
   </Tracking>
 </QCARConfig>
