@@ -36,7 +36,7 @@ public class TapToMove : MonoBehaviour
 #if UNITY_EDITOR
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //for touch device
-#elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
+#elif (UNITY_ANDROID || UNITY_IOS || UNITY_WP8)
              ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 #endif
 
@@ -49,7 +49,7 @@ public class TapToMove : MonoBehaviour
                 endPoint = hit.point;
                 //as we do not want to change the y axis value based on touch position, reset it to original y axis value
                 endPoint.y = yAxis;
-                Debug.Log(endPoint);
+                //Debug.Log(endPoint);
             }
 
         }
@@ -69,7 +69,6 @@ public class TapToMove : MonoBehaviour
         else if (isClicked && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
         {
             isClicked = false;
-
             animController.PlayAnimationOff();
             //Debug.Log("I am here");
         }

@@ -44,10 +44,8 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - Test
     - StudioParkers
     dataSetsToActivate:
-    - Test
     - StudioParkers
   videoBackground:
     clippingMode: 0

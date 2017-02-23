@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ButtonTest : MonoBehaviour {
 
-    [SerializeField] private string gameName, mainMenu;
+    [SerializeField] private string gameName, mainMenu, parkersName;
 
     private bool loadScene = false;
     [SerializeField]
@@ -18,13 +18,12 @@ public class ButtonTest : MonoBehaviour {
     private void Start()
     {
         buttonGame.SetActive(true);
-        mainText.SetActive(true);
+        //mainText.SetActive(true);
         buttonUrl.SetActive(true);
         loadingText.enabled = false;
-        Quit();
     }
 
-
+     
     // Updates once per frame
     void Update()
     {
@@ -40,29 +39,12 @@ public class ButtonTest : MonoBehaviour {
 
     }
 
-    void Quit()
-    {
-        if (Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (SceneManager.GetActiveScene().name == gameName)
-            {
-                SceneManager.LoadScene(mainMenu);
-            }
-            else
-            {
-                //Stops The Game
-                Application.Quit();
-            }
-            
-        }
-    }
-
     public void ToGame()
     {
         if (loadScene == false)
         {
             buttonGame.SetActive(false);
-            mainText.SetActive(false);
+            //mainText.SetActive(false);
             buttonUrl.SetActive(false);
             loadingText.enabled = true;
 
@@ -84,12 +66,28 @@ public class ButtonTest : MonoBehaviour {
 
     public void OpenURL()
     {
+
         #if UNITY_EDITOR
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            SceneManager.LoadScene(parkersName);
+        }
+        else
+        {
             Application.OpenURL("https://www.studioparkers.nl");
-        #elif (UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8)
+        }
+
+        #elif (UNITY_ANDROID || UNITY_IOS || UNITY_WP8)
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            SceneManager.LoadScene(parkersName);
+        }
+        else
+        {
             Application.OpenURL("https://www.studioparkers.nl");
+        }
         #endif
-    } 
+    }
 
     IEnumerator LoadNewScene()
     {
@@ -105,6 +103,27 @@ public class ButtonTest : MonoBehaviour {
             yield return null;
         }
 
+    }
+
+    void Quit()
+    {
+        if (Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (SceneManager.GetActiveScene().name == gameName)
+            {
+                SceneManager.LoadScene(mainMenu);
+            }
+            else if(SceneManager.GetActiveScene().name == parkersName)
+            {
+                SceneManager.LoadScene(mainMenu);
+            }
+            else
+            {
+                //Stops The Game
+                Application.Quit();
+            }
+
+        }
     }
 
 }

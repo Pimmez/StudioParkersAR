@@ -9,6 +9,7 @@ TagManager:
   - Glove
   - Target
   - Test
+  - Canvas
   layers:
   - Default
   - TransparentFX
