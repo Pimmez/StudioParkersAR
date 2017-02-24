@@ -65,7 +65,6 @@ namespace Vuforia
 
         #region PRIVATE_METHODS
 
-
         private void OnTrackingFound()
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
@@ -85,7 +84,6 @@ namespace Vuforia
 
             //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
-
 
         private void OnTrackingLost()
         {
