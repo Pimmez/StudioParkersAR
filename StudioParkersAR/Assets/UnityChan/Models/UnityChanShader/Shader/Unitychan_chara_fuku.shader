@@ -26,7 +26,7 @@ Shader "UnityChan/Clothing"
 
 		Pass
 		{
-			Cull Back
+			Cull Back //Back
 			ZTest LEqual
 CGPROGRAM
 #pragma multi_compile_fwdbase
