@@ -6,6 +6,8 @@ public class AnimationController : MonoBehaviour {
 
     //Makes Animator
     private Animator anim;
+    [SerializeField]
+    private string playWalk, playIdle, playHit;
 
     void Start()
     {
@@ -15,12 +17,18 @@ public class AnimationController : MonoBehaviour {
     public void PlayAnimationOn()
     {
         anim.SetBool("Idle", false);
-        anim.Play("RUN00_F");
+        anim.Play(playWalk);
     }
 
    public void PlayAnimationOff()
     {
         anim.SetBool("Idle", true);
-        anim.Play("WAIT02");
+        anim.Play(playIdle);
+    }
+
+    public void PlayHit()
+    {
+        anim.SetBool("Idle", false);
+        anim.Play(playHit);
     }
 }
