@@ -7,7 +7,7 @@ public class AnimationController : MonoBehaviour {
     //Makes Animator
     private Animator anim;
     [SerializeField]
-    private string playWalk, playIdle, playHit;
+    private string playWalk, playIdle, playHit, playAttack;
 
     void Start()
     {
@@ -16,8 +16,9 @@ public class AnimationController : MonoBehaviour {
 
     public void PlayAnimationOn()
     {
-        anim.SetBool("Idle", false);
+        
         anim.Play(playWalk);
+        anim.SetBool("Idle", false);
     }
 
    public void PlayAnimationOff()
@@ -28,7 +29,14 @@ public class AnimationController : MonoBehaviour {
 
     public void PlayHit()
     {
-        anim.SetBool("Idle", false);
+     
         anim.Play(playHit);
+        anim.SetBool("Idle", false);
+    }
+
+    public void PlayAttack()
+    {
+        anim.Play(playAttack);
+        anim.SetBool("Idle", false);
     }
 }

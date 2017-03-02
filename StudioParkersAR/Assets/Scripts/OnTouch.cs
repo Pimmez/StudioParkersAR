@@ -2,30 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnObjectTouch : MonoBehaviour
+public class OnTouch : MonoBehaviour
 {
 
-    //flag to check if the user has tapped / clicked.
-    //Set to true on click. Reset to false on reaching destination
-    private bool isClicked = false;
+    private bool isClicked;
+    public GameObject target, tong;
     //destination point
     private Vector3 endPoint;
-    [SerializeField] private GameObject target;
+    //alter this to change the speed of the movement of player / gameobject
+    [SerializeField]
+    private float speed = 100f;
     //vertical position of the gameobject
     private float yAxis;
-    private AnimationController animController;
+
+    private AnimationController anim;
 
     void Start()
     {
-        animController = GetComponent<AnimationController>();
+        anim = GetComponent<AnimationController>();
         //save the y axis value of gameobject
         yAxis = gameObject.transform.position.y;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
+        
         //check if the screen is touched / clicked
         if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
         {
@@ -44,21 +46,19 @@ public class OnObjectTouch : MonoBehaviour
             //Check if the ray hits any collider
             if (Physics.Raycast(ray, out hit))
             {
-                //set a flag to indicate to move the gameobject
-                isClicked = true;
+
                 //save the click / tap position
                 endPoint = hit.point;
                 //as we do not want to change the y axis value based on touch position, reset it to original y axis value
                 endPoint.y = yAxis;
+                //Debug.Log(hit.point);
+                //Debug.DrawLine(target.transform.position, hit.point, Color.red);
+                anim.PlayAttack();
 
-                Debug.DrawLine(target.transform.position, endPoint, Color.red);
-                Debug.LogError(endPoint);
+
+
             }
-
         }
-
-        
-
     }
 
 }
