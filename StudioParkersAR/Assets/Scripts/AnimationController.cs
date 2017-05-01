@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour {
 
-    //Makes Animator
     private Animator anim;
+    [SerializeField] private string playIdle, playAttack;
 
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public void PlayAnimationOn()
-    {
-        anim.SetBool("Idle", false);
-        anim.Play("RUN00_F");
-    }
-
-   public void PlayAnimationOff()
+   public void PlayIdle()
     {
         anim.SetBool("Idle", true);
-        anim.Play("WAIT02");
+        anim.Play(playIdle);
+    }
+
+    public void PlayAttack()
+    {
+        anim.SetBool("Idle", false);
+        anim.Play(playAttack);
     }
 }

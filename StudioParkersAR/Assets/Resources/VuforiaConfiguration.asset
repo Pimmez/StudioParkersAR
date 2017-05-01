@@ -14,7 +14,7 @@ MonoBehaviour:
   vuforia:
     vuforiaLicenseKey: AXkmMw7/////AAAAGTeakeEIu07sjTkSJ9j2fqhfXmITd5wec/VCP1NkAHUAz4ylFGtPJO6WZ8TpjrVoE1TWwGFaJDeSxt9RtxPlLsLrkk9jvAayIz9BVG7nEODua/4LScxGsYnncOLR52Lpu5KMwG5Bt30M4dSPrvBR8pugn+WSj+WbyvV53CMqsoGwR0+B99wessaoKxblpKLKJWK9vDLwhAFro79U8l/l4U7VktCcAaS6VV8J5Ra82ZKoPy4c7+VL7eC+5LgtOMmRGnWBDa7oQHjePH3+FY4ecZ13PkHCJPigC+NZZ1NQG49wins1rwGD4T2BpNL+rrHF2617knodP347Vlm2irypg8DdPoEtdZ3hfqsHYM7i4/du
     delayedInitialization: 0
-    cameraDeviceModeSetting: -3
+    cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 4
     useDelayedLoadingObjectTargets: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
     posePrediction: 0
-    modelCorrectionMode: 0
+    modelCorrectionMode: 2
     modelTransformEnabled: 0
     modelTransform: {x: 0, y: 0.1, z: -0.1}
   webcam:

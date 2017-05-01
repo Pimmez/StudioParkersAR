@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IntroParkers.unity
   - enabled: 1
-    path: Assets/Scenes/Vuforia.unity
+    path: Assets/Scenes/WhoAreParkers.unity
+  - enabled: 1
+    path: Assets/Scenes/ParkersAugmented.unity

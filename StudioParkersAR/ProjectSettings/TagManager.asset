@@ -8,6 +8,10 @@ TagManager:
   - Character
   - Glove
   - Target
+  - Test
+  - Canvas
+  - Wanderer
+  - Fly
   layers:
   - Default
   - TransparentFX
