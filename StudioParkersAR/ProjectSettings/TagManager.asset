@@ -6,12 +6,10 @@ TagManager:
   tags:
   - Floor
   - Character
-  - Glove
   - Target
-  - Test
   - Canvas
-  - Wanderer
   - Fly
+  - MenuButton
   layers:
   - Default
   - TransparentFX
