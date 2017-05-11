@@ -12,11 +12,12 @@ public class SuperUIManager : MonoBehaviour
     public const string WEBSITE = "Website";
     public const string RETURN_MENU = "ReturnToMenu";
     public const string TO_GAME = "ToGame";
-
+    public const string TO_END_SCENE = "ToEndScene";
 
     private bool loadScene;
-    [SerializeField] private Text loadingText;
     private GameObject loading, StartExperiencePanel;
+
+    [SerializeField] private Text loadingText;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class SuperUIManager : MonoBehaviour
         EventManager.StartListening(WEBSITE, OpenURL);
         EventManager.StartListening(RETURN_MENU, ReturnToMenu);
         EventManager.StartListening(TO_GAME, ToGame);
+        EventManager.StartListening(TO_END_SCENE, ToEndScene);
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class SuperUIManager : MonoBehaviour
         EventManager.StopListening(WEBSITE, OpenURL);
         EventManager.StopListening(RETURN_MENU, ReturnToMenu);
         EventManager.StopListening(TO_GAME, ToGame);
+        EventManager.StopListening(TO_END_SCENE, ToEndScene);
     }
 
     // Updates once per frame
@@ -56,8 +59,10 @@ public class SuperUIManager : MonoBehaviour
 
     //Vuforia Scene
     void StartExperience()
-    {   
-        Destroy(StartExperiencePanel);
+    {
+        StartExperiencePanel.SetActive(false);
+        //Destroy(StartExperiencePanel);
+        EventManager.TriggerEvent("CheckFlyEvent");
     }
 
     //IntroParkers Scene
@@ -81,6 +86,7 @@ public class SuperUIManager : MonoBehaviour
     //Vuforia Scene
     void ReturnToMenu()
     {
+        PlayerPrefs.DeleteKey("TotalScore");
         SceneManager.LoadScene("IntroParkers");
     }
 
@@ -95,17 +101,17 @@ public class SuperUIManager : MonoBehaviour
         }
         else
         {
-            Application.OpenURL("https://studioparkers.nl");
+            Application.OpenURL("http://studioparkers.nl");
         }
 
 #elif (UNITY_ANDROID || UNITY_IOS || UNITY_WP8)
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            SceneManager.LoadScene(moreInfo);
+            SceneManager.LoadScene("WhoAreParkers");
         }
         else
         {
-            Application.OpenURL("https://studioparkers.nl");
+            Application.OpenURL("http://studioparkers.nl");
         }
 #endif
     }
@@ -124,6 +130,11 @@ public class SuperUIManager : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    void ToEndScene()
+    {
+        SceneManager.LoadScene("EndScene");
     }
 
     //All Scenes

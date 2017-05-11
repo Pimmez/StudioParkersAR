@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour {
 
     private Animator anim;
-    [SerializeField] private string playIdle, playAttack;
+    public string playIdle, playAttack;
 
     void Start()
     {

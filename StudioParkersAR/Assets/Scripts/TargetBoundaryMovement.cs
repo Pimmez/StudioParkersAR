@@ -12,6 +12,10 @@ public class TargetBoundaryMovement : MonoBehaviour {
     private float targetX, targetY; //<- Empty variables were we can store values in
     [SerializeField] private float speed = 2f; //<- the speed of the movement * Time.DeltaTime, Higher means faster
     public Image menuImage;
+
+    public float negativeMovement = -1;
+    public float positiveMovement = 1;
+
     //[SerializeField] private GameObject screen; //Changing the screen size
 
     // Use this for initialization
@@ -52,49 +56,33 @@ public class TargetBoundaryMovement : MonoBehaviour {
             targetY = Screen.height;
             this.transform.position = new Vector3(this.transform.position.x, targetY, this.transform.position.z);
             moveDirection.y *= -1;
-
         }
-        else if (targetY < Screen.height / 2 - menuImage.rectTransform.rect.height
-            && targetX < Screen.width / 2 + menuImage.rectTransform.rect.width - 125
-            && targetX > Screen.width / 2 - menuImage.rectTransform.rect.width + 125)
-        {
-
-            targetY = menuImage.rectTransform.rect.height;
-             this.transform.position = new Vector3(this.transform.position.x, targetY, this.transform.position.z);
-            // && targetX > menuImage.rectTransform.rect.x - (menuImage.rectTransform.rect.width / 2)
-            moveDirection *= -1;
-            Debug.Log("Ik zit in het blokje");
-            //targetY > Screen.height - 150 && targetX < Screen.width - 150 && targetX > 150 
-        }
-        Debug.Log("MenuImage.RectTransform.Rect.minX: " + menuImage.rectTransform.rect.xMin); // -175
-        Debug.Log("MenuImage.RectTransform.Rect.maxX: " + menuImage.rectTransform.rect.xMax); // 175
-        Debug.Log("MenuImage.RectTransform.Rect.width: " + menuImage.rectTransform.rect.width); // 350
-        Debug.Log("MenuImage.RectTransform.Rect.x: " + menuImage.rectTransform.rect.x); // -175
-        Debug.Log("MenuImage.RectTransform.Rect.y: " + menuImage.rectTransform.rect.y); // -175
-        Debug.Log("MenuImage.RectTransform.Rect.height: " + menuImage.rectTransform.rect.height); // 350
-        Debug.Log("MenuImage.RectTransform.Rect.minY: " + menuImage.rectTransform.rect.yMin); // -175
-        Debug.Log("MenuImage.RectTransform.Rect.maxY: " + menuImage.rectTransform.rect.yMax); // 175
-        Debug.Log("MenuImage.Transform.position.x: " + menuImage.transform.position.x); // 640
-
+       
         this.transform.position += moveDirection * speed * Time.deltaTime;
     }
 
     void UpdateDirection()
     {
-        float verticalRange = Random.Range(-1f, 1f);
-        float horizontalRange = Random.Range(-1f, 1f);
-        //Debug.Log("VerticalRange: " + verticalRange);
-        //Debug.Log("horizontalRange: " + horizontalRange);
+        float verticalRange = Random.Range(negativeMovement, positiveMovement);
+        float horizontalRange = Random.Range(negativeMovement, positiveMovement);
         if (horizontalRange == 0)
         {
-            horizontalRange = Random.Range(-1f, 1f);
+            horizontalRange = Random.Range(negativeMovement, positiveMovement);
         }
         else if(verticalRange == 0)
         {
-            verticalRange = Random.Range(-1f, 1f);
+            verticalRange = Random.Range(negativeMovement, positiveMovement);
         }
         moveDirection = new Vector3(horizontalRange, verticalRange, 0);
-        Invoke("UpdateDirection", Random.Range(.5f, 3f));
+        Invoke("UpdateDirection", Random.Range(0.5f, 3f));
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "MenuButton")
+        {
+            moveDirection *= -1;
+        }
     }
 
     /*

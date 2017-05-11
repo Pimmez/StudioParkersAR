@@ -82,6 +82,8 @@ namespace Vuforia
                 component.enabled = true;
             }
 
+            EventManager.TriggerEvent("OnTrackingFound");
+
             //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 
@@ -102,7 +104,9 @@ namespace Vuforia
                 component.enabled = false;
             }
 
-           // Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            EventManager.TriggerEvent("OnTrackingLost");
+
+            // Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
         }
 
         #endregion // PRIVATE_METHODS

@@ -9,7 +9,7 @@ public class LookAtCamera : MonoBehaviour
     private Vector3 point, cameraVec;
     private AnimationController anim;
     private ChangeFlyState changeFeed;
-    private float screenwidthsom = Screen.width / 20f;
+    private float screenwidthsom = Screen.width / 30f;
     private float screenheightsom = Screen.height / 40f;
     private float mousePosX, mousePosY;
 
@@ -53,8 +53,8 @@ public class LookAtCamera : MonoBehaviour
 
             Invoke("TooFarAway", 2f);
 
-            var testX = (mousePosX / screenwidthsom) - 10;
-            var testY = mousePosY / screenheightsom - 15;
+            var testX = (mousePosX / screenwidthsom) - 15;
+            var testY = mousePosY / screenheightsom - 20;
 
             point = cameraVec;
             point.x += testX;
@@ -73,7 +73,7 @@ public class LookAtCamera : MonoBehaviour
         anim.PlayIdle();
         if(changeFeed.hitFly == true)
         {
-            changeFeed.feedback.enabled = true;
+            changeFeed.raakImage.enabled = true;
         }
     }
 
