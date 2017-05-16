@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InsectMoveDirection : MonoBehaviour {
 
+    [Tooltip("The Object it needs to follow.")]
+    [Space(10)]
     [SerializeField] private GameObject targetDirection;
     private Transform myTrans;
 

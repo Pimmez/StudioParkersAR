@@ -5,12 +5,24 @@ using UnityEngine.UI;
 
 public class ShowCountValue : MonoBehaviour
 {
-    [SerializeField] private Text scoreField, scoreTextField;
+    [Space(10)]
+    [Tooltip("The Canvas.")]
+    public GameObject canvas;
+    [Tooltip("The prefab that needs to be instanciated, in our case the fly.")]
+    public GameObject prefab;
+
+    [Space(10)]
+    [Tooltip("The position in vector3, this displays where the prefab will be placed.")]
+    public Vector3 center;
+
+    [Space(10)]
+    [Tooltip("Textfield that displays the score.")]
+    public Text scoreField;
+    [Tooltip("Textfield that displays the text of the score.")]
+    public Text scoreTextField;
 
     private float degrees;
     private int amount;
-    public GameObject prefab, canvas;
-    public Vector3 center;
     private SoundManager sound;
     private Animator anim;
 
@@ -32,9 +44,7 @@ public class ShowCountValue : MonoBehaviour
     {
         amount = PlayerPrefs.GetInt("TotalScore");
         degrees = 360 / amount;
-        //Debug.Log("Spawning");
         StartCoroutine(SpawnPrefabs(3f / amount, amount));
-
     }
 
     public IEnumerator SpawnPrefabs(float interval, float invokeCount)

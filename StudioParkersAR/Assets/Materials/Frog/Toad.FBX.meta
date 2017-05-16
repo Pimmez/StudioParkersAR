@@ -258,6 +258,7 @@ ModelImporter:
     7400018: Die
     7400020: Die 2
     7400022: Attack1
+    7400024: Lick
     9500000: //RootNode
     13700000: Toad001
   materials:
@@ -3282,6 +3283,283 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: b_Root
+        weight: 1
+      - path: b_Root/b_Hibs
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe1_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe1_1/b_L_Toe1_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe1_1/b_L_Toe1_2/b_L_Toe1_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe1_1/b_L_Toe1_2/b_L_Toe1_3/b_L_Toe1_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe2_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe2_1/b_L_Toe2_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe2_1/b_L_Toe2_2/b_L_Toe2_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe2_1/b_L_Toe2_2/b_L_Toe2_3/b_L_Toe2_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe3_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe3_1/b_L_Toe3_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe3_1/b_L_Toe3_2/b_L_Toe3_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe3_1/b_L_Toe3_2/b_L_Toe3_3/b_L_Toe3_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe4_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe4_1/b_L_Toe4_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe4_1/b_L_Toe4_2/b_L_Toe4_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe4_1/b_L_Toe4_2/b_L_Toe4_3/b_L_Toe4_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe5_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe5_1/b_L_Toe5_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe5_1/b_L_Toe5_2/b_L_Toe5_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_L_Leg/b_L_Chin/b_R_Foot/b_L_Foot_nub/b_L_Toe5_1/b_L_Toe5_2/b_L_Toe5_3/b_L_Toe5_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe1_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe1_1/b_R_Toe1_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe1_1/b_R_Toe1_2/b_R_Toe1_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe1_1/b_R_Toe1_2/b_R_Toe1_3/b_R_Toe1_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe2_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe2_1/b_R_Toe2_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe2_1/b_R_Toe2_2/b_R_Toe2_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe2_1/b_R_Toe2_2/b_R_Toe2_3/b_R_Toe2_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe3_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe3_1/b_R_Toe3_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe3_1/b_R_Toe3_2/b_R_Toe3_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe3_1/b_R_Toe3_2/b_R_Toe3_3/b_R_Toe3_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe4_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe4_1/b_R_Toe4_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe4_1/b_R_Toe4_2/b_R_Toe4_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe4_1/b_R_Toe4_2/b_R_Toe4_3/b_R_Toe4_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe5_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe5_1/b_R_Toe5_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe5_1/b_R_Toe5_2/b_R_Toe5_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_R_Leg/b_R_Chin/b_R_Foot 1/b_R_Foot_nub/b_R_Toe5_1/b_R_Toe5_2/b_R_Toe5_3/b_R_Toe5_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Head_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_Jaw_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_Potch
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_Potch/b_Potch1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5/b_tongue_6
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5/b_tongue_6/b_tongue_7
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5/b_tongue_6/b_tongue_7/b_tongue_8
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5/b_tongue_6/b_tongue_7/b_tongue_8/b_tongue_9
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Jaw/b_tongue_1/b_tongue_2/b_tongue_3/b_tongue_4/b_tongue_5/b_tongue_6/b_tongue_7/b_tongue_8/b_tongue_9/b_tongue_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Left_eye
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_Head/b_Right_eye
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_M1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_M1/b_L_Finger_M2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_M1/b_L_Finger_M2/b_L_Finger_M3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_M1/b_L_Finger_M2/b_L_Finger_M3/b_L_Finger_M4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_M1/b_L_Finger_M2/b_L_Finger_M3/b_L_Finger_M4/b_L_Finger_M_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_P1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_P1/b_L_Finger_P2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_P1/b_L_Finger_P2/b_L_Finger_P3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_P1/b_L_Finger_P2/b_L_Finger_P3/b_L_Finger_P4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_P1/b_L_Finger_P2/b_L_Finger_P3/b_L_Finger_P4/b_L_Finger_P_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_R1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_R1/b_L_Finger_R2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_R1/b_L_Finger_R2/b_L_Finger_R3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_R1/b_L_Finger_R2/b_L_Finger_R3/b_L_Finger_R3
+          1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_R1/b_L_Finger_R2/b_L_Finger_R3/b_L_Finger_R3
+          1/b_L_Finger_R_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_T1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_T1/b_L_Finger_T2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_T1/b_L_Finger_T2/b_L_Finger_T3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_T1/b_L_Finger_T2/b_L_Finger_T3/b_L_Finger_T4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/b_L_Shoulder/b_L_Arm/b_L_ForeArm/b_L_ForeArm_nub/b_L_Finger_T1/b_L_Finger_T2/b_L_Finger_T3/b_L_Finger_T4/b_L_Finger_T_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_M1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_M1/b_R_Finger_M2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_M1/b_R_Finger_M2/b_R_Finger_M3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_M1/b_R_Finger_M2/b_R_Finger_M3/b_R_Finger_M4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_M1/b_R_Finger_M2/b_R_Finger_M3/b_R_Finger_M4/b_R_Finger_M_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_P1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_P1/b_R_Finger_P2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_P1/b_R_Finger_P2/b_R_Finger_P3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_P1/b_R_Finger_P2/b_R_Finger_P3/b_R_Finger_P4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_P1/b_R_Finger_P2/b_R_Finger_P3/b_R_Finger_P4/b_R_Finger_P_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_R1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_R1/b_R_Finger_R2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_R1/b_R_Finger_R2/b_R_Finger_R3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_R1/b_R_Finger_R2/b_R_Finger_R3/b_R_Finger_R4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_R1/b_R_Finger_R2/b_R_Finger_R3/b_R_Finger_R4/b_R_Finger_R_nub
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_T1
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_T1/b_R_Finger_T2
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_T1/b_R_Finger_T2/b_R_Finger_T3
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_T1/b_R_Finger_T2/b_R_Finger_T3/b_R_Finger_T4
+        weight: 1
+      - path: b_Root/b_Hibs/b_Spine1/b_Spine2/Bone033(mirrored)/b_R_Arm/b_R_ForeArm_nub/Bone036(mirrored)/b_R_Finger_T1/b_R_Finger_T2/b_R_Finger_T3/b_R_Finger_T4/b_R_Finger_T_nub
+        weight: 1
+      - path: Toad001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lick
+      takeName: Toad_2014
+      firstFrame: 150
+      lastFrame: 174
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.98998344
+        functionName: EndLick
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

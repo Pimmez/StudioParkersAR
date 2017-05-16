@@ -5,63 +5,68 @@ using UnityEngine.UI;
 
 public class LookAtCamera : MonoBehaviour
 {
-    [SerializeField] private GameObject target, kikker;
+    [Space(10)]
+    [Tooltip("This is the point where the frog will extend its tongue too")]
+    [SerializeField] private GameObject target;
+
     private Vector3 point, cameraVec;
     private AnimationController anim;
     private ChangeFlyState changeFeed;
     private float screenwidthsom = Screen.width / 30f;
     private float screenheightsom = Screen.height / 40f;
     private float mousePosX, mousePosY;
+    private Animator animator;
 
-    public Text farAway;
+    [HideInInspector]
+    public bool disableTouch = true;
 
     private void Start()
     {
         anim = GetComponent<AnimationController>();
+        animator = FindObjectOfType<Animator>();
         changeFeed = FindObjectOfType<ChangeFlyState>();
-        farAway.enabled = false;
     }
 
     void Update()
     {
-
-        cameraVec = Camera.main.transform.position;
-        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
+        if (disableTouch == true)
         {
-            if (Input.touchCount > 0)
+            cameraVec = Camera.main.transform.position;
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
             {
-                mousePosX = Input.GetTouch(0).position.x;
-                mousePosY = Input.GetTouch(0).position.y;
-            }
-            else
-            {
-                mousePosX = Input.mousePosition.x;
-                mousePosY = Input.mousePosition.y;
-            }
+                if (Input.touchCount > 0)
+                {
+                    mousePosX = Input.GetTouch(0).position.x;
+                    mousePosY = Input.GetTouch(0).position.y;
+                }
+                else
+                {
+                    mousePosX = Input.mousePosition.x;
+                    mousePosY = Input.mousePosition.y;
+                }
 
-            //declare a variable of RaycastHit struct
-            RaycastHit hit;
-            //Create a Ray on the tapped / clicked position
-            Ray ray;
-            //for unity editor
+                //declare a variable of RaycastHit struct
+                RaycastHit hit;
+                //Create a Ray on the tapped / clicked position
+                Ray ray;
+                //for unity editor
 #if UNITY_EDITOR
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //for touch device
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                //for touch device
 #elif (UNITY_ANDROID || UNITY_IOS || UNITY_WP8)
              ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 #endif
 
-            Invoke("TooFarAway", 2f);
+                var testX = (mousePosX / screenwidthsom) - 15;
+                var testY = mousePosY / screenheightsom - 20;
 
-            var testX = (mousePosX / screenwidthsom) - 15;
-            var testY = mousePosY / screenheightsom - 20;
+                point = cameraVec;
+                point.x += testX;
+                point.y = testY;
 
-            point = cameraVec;
-            point.x += testX;
-            point.y = testY;
-
-            transform.LookAt(point);
-            anim.PlayAttack();
+                transform.LookAt(point);
+                anim.PlayAttack();
+            }
         }
     }
 
@@ -73,22 +78,20 @@ public class LookAtCamera : MonoBehaviour
         anim.PlayIdle();
         if(changeFeed.hitFly == true)
         {
-            changeFeed.raakImage.enabled = true;
+            StartCoroutine(EnableFly());
         }
     }
 
-    void TooFarAway()
+    IEnumerator EnableFly()
     {
-        if(cameraVec.z <= -20 && !farAway.enabled)
+        if (changeFeed.raakImage.enabled == false)
         {
-            farAway.enabled = true;
-            Invoke("HideFarAway", 1f);
-        }
+            changeFeed.raakImage.enabled = true;
+            animator.SetBool("FadeOut", true);
+            animator.Play("RaakFade");
+            animator.SetBool("FadeOut", false);
+            yield return new WaitForSeconds(0.5f);
+            EventManager.TriggerEvent("EnableFly");
+        }     
     }
-
-    void HideFarAway()
-    { 
-        farAway.enabled = false;
-    }
-
 }

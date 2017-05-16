@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
+    [Space(10)]
+    [Tooltip("Text that shows the score.")]
     [SerializeField] private Text scoreText;
+
     private int amountHit, totalScore;
 
     // Use this for initialization
@@ -34,7 +37,4 @@ public class Score : MonoBehaviour {
         scoreText.text = "X " + amountHit;
         PlayerPrefs.SetInt("TotalScore", totalScore + 1);
     }
-
-    
-
 }

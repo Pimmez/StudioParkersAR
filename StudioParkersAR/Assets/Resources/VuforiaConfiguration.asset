@@ -14,9 +14,9 @@ MonoBehaviour:
   vuforia:
     vuforiaLicenseKey: AXkmMw7/////AAAAGTeakeEIu07sjTkSJ9j2fqhfXmITd5wec/VCP1NkAHUAz4ylFGtPJO6WZ8TpjrVoE1TWwGFaJDeSxt9RtxPlLsLrkk9jvAayIz9BVG7nEODua/4LScxGsYnncOLR52Lpu5KMwG5Bt30M4dSPrvBR8pugn+WSj+WbyvV53CMqsoGwR0+B99wessaoKxblpKLKJWK9vDLwhAFro79U8l/l4U7VktCcAaS6VV8J5Ra82ZKoPy4c7+VL7eC+5LgtOMmRGnWBDa7oQHjePH3+FY4ecZ13PkHCJPigC+NZZ1NQG49wins1rwGD4T2BpNL+rrHF2617knodP347Vlm2irypg8DdPoEtdZ3hfqsHYM7i4/du
     delayedInitialization: 0
-    cameraDeviceModeSetting: -1
+    cameraDeviceModeSetting: -2
     maxSimultaneousImageTargets: 1
-    maxSimultaneousObjectTargets: 4
+    maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
     mirrorVideoBackground: 0
@@ -66,5 +66,5 @@ MonoBehaviour:
   webcam:
     deviceNameSetInEditor: 
     flipHorizontally: 0
-    turnOffWebCam: 0
+    turnOffWebCam: 1
     renderTextureLayer: 30

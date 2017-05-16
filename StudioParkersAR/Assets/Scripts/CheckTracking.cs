@@ -8,17 +8,28 @@ public class CheckTracking : MonoBehaviour{
 
     private TrackableBehaviour mTrackableBehaviour;
     private bool flyStatus = false;
-    public GameObject fly, flyTarget, TooFarText, startExperience, Score;
-
-    private SoundManager sound;
     private ChangeFlyState flystate;
+
+    [Space(10)]
+
+    [Tooltip("The fly that is drawn on the canvas")]
+    public GameObject fly;
+
+    [Tooltip("The target that the fly follows")]
+    public GameObject flyTarget;
+
+    [Tooltip("StartExperiencePanel")]
+    public GameObject startExperience;
+
+    [Tooltip("Score / Counter")]
+    public GameObject Score;
+
 
     void Start()
     {
         VuforiaBehaviour.Instance.enabled = false;
         flystate = FindObjectOfType<ChangeFlyState>();
         Score.SetActive(false);
-        sound = FindObjectOfType<SoundManager>();
     }
 
     private void OnEnable()
@@ -26,7 +37,7 @@ public class CheckTracking : MonoBehaviour{
         EventManager.StartListening("CheckFlyEvent", CheckFlyEvent);
         EventManager.StartListening("OnTrackingFound", OnTrackingFound);
         EventManager.StartListening("OnTrackingLost", OnTrackingLost);
-
+        EventManager.StartListening("StartTheGame", StartTheGame);
     }
 
     private void OnDisable()
@@ -34,7 +45,7 @@ public class CheckTracking : MonoBehaviour{
         EventManager.StopListening("CheckFlyEvent", CheckFlyEvent);
         EventManager.StopListening("OnTrackingFound", OnTrackingFound);
         EventManager.StopListening("OnTrackingLost", OnTrackingLost);
-
+        EventManager.StopListening("StartTheGame", StartTheGame);
     }
 
     void CheckFlyEvent()
@@ -46,30 +57,30 @@ public class CheckTracking : MonoBehaviour{
     }
 
     void OnTrackingFound()
-    {
-        //Log.instance.LogFiles("OnTrackingFound");
-        flyStatus = true;
-        Score.SetActive(true);
-        CheckFly();
+    {  
         EventManager.TriggerEvent("TimerTrue");
     }
 
     void OnTrackingLost()
     {
-        //Log.instance.LogFiles("OnTrackingLost");
         flyStatus = false;
         Score.SetActive(false);
         EventManager.TriggerEvent("TimerFalse");
     }
 
+    void StartTheGame()
+    {
+        flyStatus = true;
+        Score.SetActive(true);
+        CheckFly();
+    }
+
     void CheckFly()
     {
-        //Log.instance.LogFiles("flystatus :: " + flyStatus);
         if (flyStatus)
         {
             flystate.fly.enabled = true;
             flystate.targetFly.SetActive(true);
-            TooFarText.SetActive(true);
         }
     }
 }

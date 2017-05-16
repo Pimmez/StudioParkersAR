@@ -15,14 +15,13 @@ public class SuperUIManager : MonoBehaviour
     public const string TO_END_SCENE = "ToEndScene";
 
     private bool loadScene;
-    private GameObject loading, StartExperiencePanel;
-
-    [SerializeField] private Text loadingText;
+    private GameObject StartExperiencePanel;
+    private Animator anim;
 
     private void Start()
     {
         StartExperiencePanel = GameObject.Find("StartExperiencePanel");
-        loadingText.enabled = false;
+        anim = FindObjectOfType<Animator>();
     }
 
     private void OnEnable()
@@ -46,22 +45,13 @@ public class SuperUIManager : MonoBehaviour
     // Updates once per frame
     void Update()
     {
-        // If the new scene has started loading...
-        if (loadScene == true)
-        {
-            // ...then pulse the transparency of the loading text to let the player know that the computer is still working.
-            loadingText.color = new Color(loadingText.color.r, loadingText.color.g, loadingText.color.b, Mathf.PingPong(Time.time, 1));
-        }
-
         Quit("IntroParkers", "ParkersAugmented", "WhoAreParkers");
-
     }
 
     //Vuforia Scene
     void StartExperience()
     {
         StartExperiencePanel.SetActive(false);
-        //Destroy(StartExperiencePanel);
         EventManager.TriggerEvent("CheckFlyEvent");
     }
 
@@ -70,16 +60,13 @@ public class SuperUIManager : MonoBehaviour
     {
         if (loadScene == false)
         {
-            loadingText.enabled = true;
-
-            // ...set the loadScene boolean to true to prevent loading a new scene more than once...
             loadScene = true;
-
-            // ...change the instruction text to read "Loading..."
-            loadingText.text = "Loading...";
-
-            // ...and start a coroutine that will load the desired scene.
+            anim.SetBool("IsPressed", true);
+            anim.Play("Pressed");
+            PlayerPrefs.DeleteKey("TotalScore");
+            StartCoroutine(FadeLevelIn(ToGame));
             StartCoroutine(LoadNewScene());
+
         }
     }
 
@@ -87,6 +74,7 @@ public class SuperUIManager : MonoBehaviour
     void ReturnToMenu()
     {
         PlayerPrefs.DeleteKey("TotalScore");
+        StartCoroutine(FadeLevelIn(ReturnToMenu));
         SceneManager.LoadScene("IntroParkers");
     }
 
@@ -97,6 +85,7 @@ public class SuperUIManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
+            StartCoroutine(FadeLevelIn(OpenURL));
             SceneManager.LoadScene("WhoAreParkers");
         }
         else
@@ -123,7 +112,6 @@ public class SuperUIManager : MonoBehaviour
 
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
         AsyncOperation aSync = SceneManager.LoadSceneAsync("ParkersAugmented");
-
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!aSync.isDone)
         {
@@ -134,6 +122,7 @@ public class SuperUIManager : MonoBehaviour
 
     void ToEndScene()
     {
+        StartCoroutine(FadeLevelIn(ToEndScene));
         SceneManager.LoadScene("EndScene");
     }
 
@@ -157,6 +146,14 @@ public class SuperUIManager : MonoBehaviour
             }
 
         }
+    }
+
+
+    IEnumerator FadeLevelIn(UnityAction DoLast)
+    {
+        float fadeTime = GameObject.Find("Fade").GetComponent<Fade>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        DoLast();
     }
 
 }

@@ -5,18 +5,37 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
-    [SerializeField] private Text timerText;
+    [Tooltip("timer1Text || timer2Text :: indicates which timer goes where and both need to be a Text component.")]
+    [SerializeField] private Text timer1Text, timer2Text;
 
-    [SerializeField] private float timerCounter;
-    public bool isTiming;
+    [Space(10)]
+    [Tooltip("TimerBalk :: The Green Image Shown In The Top Of The Screen.")]
+    [SerializeField] private RectTransform timerBalk;
 
+    [Space(10)]
+    [Tooltip("timer1Text :: indicates the countdown time for timer1Text.")]
+    [SerializeField] private float timer1Value;
+
+    [Tooltip("timer2Text :: indicates the countdown time for timer2Text.")]
+    [SerializeField] private float timer2Value;
+
+    [Tooltip("SmoothTime :: The Lower The Float The Smoother It Will Be.")]
+    [SerializeField] private float smoothTime = 1f;
+      
+    private Text textValue;
+    private float timerValue;
+    private bool isTiming, Timer1Bool, Timer2Bool;
     private SoundManager sound;
     private AudioSource audio;
+    private float velocity;
 
     private void Start()
     {
-        audio = FindObjectOfType<AudioSource>();
         sound = FindObjectOfType<SoundManager>();
+        audio = FindObjectOfType<AudioSource>();
+        timerValue = timer1Value;
+        textValue = timer1Text;
+        timerBalk.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -33,9 +52,10 @@ public class Timer : MonoBehaviour {
 
     void Update()
     {
-        if(isTiming)
+        if (isTiming)
         {
-            CountTimer();
+            TimerValue();
+            ChangeTimerImage();
         }
     }
 
@@ -54,27 +74,44 @@ public class Timer : MonoBehaviour {
         SetTimer(false);
     }
 
-    void CountTimer()
+    float TimerValue()
     {
-        timerCounter -= Time.deltaTime;
+        timerValue -= Time.deltaTime;
 
-        float min = Mathf.Floor(timerCounter / 60);
+        float min = Mathf.Floor(timerValue / 60);
 
-        float sec = timerCounter % 60;
+        float sec = timerValue % 60;
 
-        timerText.text = string.Format("Timer: {0:0} : {1:00}", min, sec);
+        textValue.text = string.Format("{1:0}", min, sec);
 
-        if (!audio.isPlaying)
+
+        if (timerValue <= 0 && !Timer1Bool)
         {
-            sound.PlayAudioIfNotPlaying(1);
-            //sound.PlayAudio(1);
+            Destroy(timer1Text);
+            Timer2Bool = true;
+            timerValue = timer2Value;
+            textValue = timer2Text;
+            EventManager.TriggerEvent("StartTheGame");
+            timerBalk.gameObject.SetActive(true);
+            Timer1Bool = true;
+            if (!audio.isPlaying)
+            {
+                sound.PlayAudioIfNotPlaying(1);
+            }
         }
-
-        if (timerCounter <= 0)
+        else if (timerValue <= 0 && Timer2Bool)
         {
-            Destroy(timerText);
+            Destroy(timer2Text);
             isTiming = false;
-            EventManager.TriggerEvent(SuperUIManager.TO_END_SCENE);
+            EventManager.TriggerEvent("OnBurb");
         }
-    } 
+
+        return timerValue;
+    }
+
+    void ChangeTimerImage()
+    {
+        float newX = Mathf.SmoothDamp(timerBalk.localScale.x, (timerValue + 1) / (timer2Value + 3), ref velocity, smoothTime);
+        timerBalk.localScale = new Vector3(newX, timerBalk.localScale.y, timerBalk.localScale.z);
+    }
 }
