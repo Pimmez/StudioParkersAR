@@ -45,7 +45,7 @@ public class SuperUIManager : MonoBehaviour
     // Updates once per frame
     void Update()
     {
-        Quit("IntroParkers", "ParkersAugmented", "WhoAreParkers");
+        Quit("IntroParkers", "WhoAreParkers", "ParkersAugmented", "EndScene");
     }
 
     //Vuforia Scene
@@ -127,15 +127,19 @@ public class SuperUIManager : MonoBehaviour
     }
 
     //All Scenes
-    void Quit(string mainMenu, string gameName, string moreInfo)
+    void Quit(string mainMenu, string InfoParkers, string GameName, string EndScene)
     {
         if (Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name == gameName)
+            if (SceneManager.GetActiveScene().name == GameName)
             {
                 SceneManager.LoadScene(mainMenu);
             }
-            else if (SceneManager.GetActiveScene().name == moreInfo)
+            else if (SceneManager.GetActiveScene().name == InfoParkers)
+            {
+                SceneManager.LoadScene(mainMenu);
+            }
+            else if (SceneManager.GetActiveScene().name == EndScene)
             {
                 SceneManager.LoadScene(mainMenu);
             }

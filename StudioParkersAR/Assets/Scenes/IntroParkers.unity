@@ -42,7 +42,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -72,7 +72,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000001, guid: 4dde9010fcd3ecc4fb714b2c94f8ac33,
+  m_LightingDataAsset: {fileID: 112000001, guid: 02526ea290aabfe4595c513dbfc99cea,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -719,7 +719,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome to \t\t\tStudio Parkers Reality"
+  m_Text: "Welcome to \nStudio Parkers Reality"
 --- !u!222 &1661642798
 CanvasRenderer:
   m_ObjectHideFlags: 0

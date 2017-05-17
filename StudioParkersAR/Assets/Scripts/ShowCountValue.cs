@@ -43,26 +43,34 @@ public class ShowCountValue : MonoBehaviour
     void DisplayFlies()
     {
         amount = PlayerPrefs.GetInt("TotalScore");
-        degrees = 360 / amount;
-        StartCoroutine(SpawnPrefabs(3f / amount, amount));
+        if (amount > 0)
+        {
+            degrees = 360 / amount;
+            StartCoroutine(SpawnPrefabs(3f / amount, amount));
+        }
+        else if (amount <= 0)
+        {
+            scoreField.text = "0";
+        }
     }
 
     public IEnumerator SpawnPrefabs(float interval, float invokeCount)
     {
         for (int i = 0; i < invokeCount; i++)
         {
-            var x = center.x + Mathf.Sin((degrees * i) * Mathf.PI / 180) * 150;
-            var y = center.y + Mathf.Cos((degrees * i) * Mathf.PI / 180) * 150;
-            prefab.transform.position = new Vector3(x, y, 0);
-            Instantiate(prefab, canvas.transform, false);
-            sound.PlayAudio(0);
-            yield return new WaitForSeconds(interval);
+             var x = center.x + Mathf.Sin((degrees * i) * Mathf.PI / 180) * 150;
+             var y = center.y + Mathf.Cos((degrees * i) * Mathf.PI / 180) * 150;
+             prefab.transform.position = new Vector3(x, y, 0);
+             Instantiate(prefab, canvas.transform, false);
+             sound.PlayAudio(0);
+             yield return new WaitForSeconds(interval);
         }
         anim.SetBool("isScaling", true);
         anim.Play("Scaling");
         anim.SetBool("isScaling", false);
         scoreField.text = "" + amount.ToString();
         sound.PlayAudio(1);
+        
     }
 
 }

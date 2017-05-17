@@ -64,6 +64,8 @@ public class LookAtCamera : MonoBehaviour
                 point.x += testX;
                 point.y = testY;
 
+                
+
                 transform.LookAt(point);
                 anim.PlayAttack();
             }

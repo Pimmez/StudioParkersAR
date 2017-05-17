@@ -52,12 +52,12 @@ public class CheckTracking : MonoBehaviour{
     {
         if (startExperience.activeSelf == false)
         {
-            VuforiaBehaviour.Instance.enabled = true;           
+            VuforiaBehaviour.Instance.enabled = true;
         }
     }
 
     void OnTrackingFound()
-    {  
+    {
         EventManager.TriggerEvent("TimerTrue");
     }
 

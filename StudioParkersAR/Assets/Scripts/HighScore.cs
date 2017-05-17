@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class HighScore : MonoBehaviour{
 
-    public string addScoreURL = "IP ADDRESS/adduser.php"; //be sure to add a ? to your url
+    public string addScoreURL = "http://mywebsite/check_scores.php"; //be sure to add a ? to your url
     public Text MyInputField;
+    public Text showMessage;
     private int Score;
 
     private void OnEnable()
@@ -46,14 +47,16 @@ public class HighScore : MonoBehaviour{
 
         // with this line we'll wait until we get an info back
         yield return webRequest;
-
+        Debug.Log(webRequest);
         if (webRequest.error != null)
         {
-            print("There was an error posting the high score: " + webRequest.error);
+            showMessage.color = Color.red;
+            showMessage.text = "Er is een fout opgetreden bij het uploaden van je Highscore: " + webRequest.error;
         }
         else
         {
-            print("Test ok");
+            showMessage.color = Color.white;
+            showMessage.text = "Jouw Highscore is geüpload!";
             webRequest.Dispose(); //clear our form in game
         }
 
