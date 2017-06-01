@@ -16,6 +16,7 @@ public class EventManager : MonoBehaviour {
             if(!eventManager)//if we dont have a eventManager
             {
                 eventManager = FindObjectOfType(typeof(EventManager)) as EventManager; //Find EventManager
+
                 if(!eventManager) //if we still don't have a eventManager
                 {
                     //Show An Error
@@ -26,6 +27,7 @@ public class EventManager : MonoBehaviour {
                     eventManager.Init();
                 }
             }
+			DontDestroyOnLoad (eventManager);
             return eventManager;
         }
     }

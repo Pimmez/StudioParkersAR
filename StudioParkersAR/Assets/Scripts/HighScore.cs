@@ -2,13 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class HighScore : MonoBehaviour{
+public class HighScore : MonoBehaviour {
 
-    public string addScoreURL = "http://mywebsite/check_scores.php"; //be sure to add a ? to your url
-    public Text MyInputField;
+    private string addScoreURL = "http://www.studioparkers.nl/highscore/highscore.php?"; //be sure to add a ? to your url
+    private string secretKey = "Parkerdf3r23e4k4eera23sq3s"; // Edit this value and make sure it's the same as the one stored on the server
+    public Text achternaam, voornaam;
     public Text showMessage;
     private int Score;
+    private string device;
+
+    private void Start()
+    {
+#if UNITY_EDITOR
+        device = "PC";
+#elif (UNITY_IOS)
+        device = "IOS";
+#elif (UNITY_ANDROID)
+         device = "Android"; 
+#elif (!UNITY_ANDROID || UNITY_IOS) 
+        device = "";
+#endif
+    }
 
     private void OnEnable()
     {
@@ -23,93 +39,52 @@ public class HighScore : MonoBehaviour{
     void Activated()
     {
         Score = PlayerPrefs.GetInt("TotalScore");
-        StartCoroutine(PostScores(MyInputField.text, Score));
+        StartCoroutine(PostScores(voornaam.text, achternaam.text, Score, device, secretKey));
     }
 
-    // remember to use StartCoroutine when calling this function!
-    IEnumerator PostScores(string myinput, int score)
+    IEnumerator PostScores(string surname, string lastname, int score, string device, string key)
     {
-        //This connects to a server side php script that will add the name and score to a MySQL DB.
-        // Supply it with a string representing the players name and the players score.
 
-        // first we create a new WWWForm, that means a "post" command goes out to our database (for futher information just google "post" and "get" commands for html/php
+        // Create a form object for sending high score data to the server
         WWWForm form = new WWWForm();
 
-        // with this line we will give a new name and save our score into that name
-        form.AddField("NAME", myinput);
-        form.AddField("SCORE", score);
+        string post_url = addScoreURL + "surname=" + WWW.EscapeURL(surname) + "lastname=" + WWW.EscapeURL(lastname) + "&score=" + score + "&device=" + device + "&key=" + key;
 
-        Debug.Log("Naam: " + myinput + " Score: " + score);
+        // Post the URL to the site and create a download object to get the result.
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post; // Wait until the download is done
+        print(hs_post);
 
-        // the next line will start our php file that saves the Score and attaches the saved values from the "form" to it
-        // For this tutorial I've used a new variable "db_url" that stores the path
-        WWW webRequest = new WWW(addScoreURL, form);
-
-        // with this line we'll wait until we get an info back
-        yield return webRequest;
-        Debug.Log(webRequest);
-        if (webRequest.error != null)
-        {
-            showMessage.color = Color.red;
-            showMessage.text = "Er is een fout opgetreden bij het uploaden van je Highscore: " + webRequest.error;
+        if (hs_post.error != null)
+        {       
+			showMessage.text = "There was an error posting the high score: " + hs_post.error;
         }
         else
         {
-            showMessage.color = Color.white;
-            showMessage.text = "Jouw Highscore is geüpload!";
-            webRequest.Dispose(); //clear our form in game
+			showMessage.text = "Je highscore is geupload!";
         }
+        
 
+
+        /*
+        // Create a download object
+        WWW webRequest = new WWW(addScoreURL, form);
+
+        // Wait until the download is done
+        yield return webRequest; 
+
+        if (!string.IsNullOrEmpty(webRequest.error))
+        {
+            print("Error downloading: " + webRequest.error);
+        }
+        else
+        {
+            // show the highscores
+            print("Je highscore is geupload!");
+        }
+        */
     }
 
 }
 
-    /*
-    private string formNick = ""; //this is the field where the player will put the name to login
-    private string formPassword = ""; //this is his password
-
-    public string formText = ""; //this field is where the messages sent by PHP script will be in
-    public string URL = "http://mywebsite/check_scores.php"; //change for your URL
-    public string hash = "hashcode"; //change your secret code, and remember to change into the PHP file too
-
-    private Rect textrect = new Rect(10, 150, 500, 500); //just make a GUI object rectangle
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 80, 20), "Your nick:"); //text with your nick
-        GUI.Label(new Rect(10, 30, 80, 20), "Your pass:");
-
-        formNick = GUI.TextField(new Rect(90, 10, 100, 20), formNick); //here you will insert the new value to variable formNick
-        formPassword = GUI.TextField(new Rect(90, 30, 100, 20), formPassword); //same as above, but for password
-
-        if (GUI.Button(new Rect(10, 60, 100, 20), "Try login"))
-        { //just a button
-            Login();
-        }
-        GUI.TextArea(textrect, formText);
-    }
-
-    void Login()
-    {
-        var form = new WWWForm(); //here you create a new form connection
-        form.AddField("myform_hash", hash); //add your hash code to the field myform_hash, check that this variable name is the same as in PHP file
-        form.AddField("myform_nick", formNick);
-        form.AddField("myform_pass", formPassword);
-        
-        var w = WWW(URL, form); //here we create a var called 'w' and we sync with our URL and the form
-        yield return w; //we wait for the form to check the PHP file, so our game dont just hang
-        if (w.error != null)
-        {
-            print(w.error); //if there is an error, tell us
-        }
-        else
-        {
-            print("Test ok");
-            formText = w.data; //here we return the data our PHP told us
-            w.Dispose(); //clear our form in game
-        }
-        
-        formNick = ""; //just clean our variables
-        formPassword = "";
-    }
-    */
+    
