@@ -10,7 +10,7 @@ public class HighScore : MonoBehaviour {
     private string secretKey = "Parkerdf3r23e4k4eera23sq3s"; // Edit this value and make sure it's the same as the one stored on the server
     public Text achternaam, voornaam;
     public Text showMessage;
-    private int Score;
+    private int score;
     private string device;
 
     private void Start()
@@ -38,22 +38,20 @@ public class HighScore : MonoBehaviour {
 
     void Activated()
     {
-        Score = PlayerPrefs.GetInt("TotalScore");
-        StartCoroutine(PostScores(voornaam.text, achternaam.text, Score, device, secretKey));
+        score = PlayerPrefs.GetInt("TotalScore");
+        StartCoroutine(PostScores(voornaam.text, achternaam.text, score, device, secretKey));
     }
 
     IEnumerator PostScores(string surname, string lastname, int score, string device, string key)
     {
-
         // Create a form object for sending high score data to the server
         WWWForm form = new WWWForm();
 
-        string post_url = addScoreURL + "surname=" + WWW.EscapeURL(surname) + "lastname=" + WWW.EscapeURL(lastname) + "&score=" + score + "&device=" + device + "&key=" + key;
+        string post_url = addScoreURL + "surname=" + WWW.EscapeURL(surname) + "&lastname=" + WWW.EscapeURL(lastname) + "&score=" + score + "&device=" + device + "&key=" + key;
 
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);
         yield return hs_post; // Wait until the download is done
-        print(hs_post);
 
         if (hs_post.error != null)
         {       
@@ -64,25 +62,6 @@ public class HighScore : MonoBehaviour {
 			showMessage.text = "Je highscore is geupload!";
         }
         
-
-
-        /*
-        // Create a download object
-        WWW webRequest = new WWW(addScoreURL, form);
-
-        // Wait until the download is done
-        yield return webRequest; 
-
-        if (!string.IsNullOrEmpty(webRequest.error))
-        {
-            print("Error downloading: " + webRequest.error);
-        }
-        else
-        {
-            // show the highscores
-            print("Je highscore is geupload!");
-        }
-        */
     }
 
 }

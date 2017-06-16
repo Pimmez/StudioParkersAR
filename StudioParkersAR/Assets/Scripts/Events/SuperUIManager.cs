@@ -13,6 +13,8 @@ public class SuperUIManager : MonoBehaviour
     public const string RETURN_MENU = "ReturnToMenu";
     public const string TO_GAME = "ToGame";
     public const string TO_END_SCENE = "ToEndScene";
+    public const string PEEK_EXPERIENCE = "StartPeekExperience";
+    public const string TO_PEEK = "PeekScene";
 
     private bool loadScene;
     private GameObject StartExperiencePanel;
@@ -31,6 +33,8 @@ public class SuperUIManager : MonoBehaviour
         EventManager.StartListening(RETURN_MENU, ReturnToMenu);
         EventManager.StartListening(TO_GAME, ToGame);
         EventManager.StartListening(TO_END_SCENE, ToEndScene);
+        EventManager.StartListening(PEEK_EXPERIENCE, PeekExperience);
+        EventManager.StartListening(TO_PEEK, ToPeekScene);
     }
 
     private void OnDisable()
@@ -40,19 +44,29 @@ public class SuperUIManager : MonoBehaviour
         EventManager.StopListening(RETURN_MENU, ReturnToMenu);
         EventManager.StopListening(TO_GAME, ToGame);
         EventManager.StopListening(TO_END_SCENE, ToEndScene);
+        EventManager.StopListening(PEEK_EXPERIENCE, PeekExperience);
+        EventManager.StopListening(TO_PEEK, ToPeekScene);
     }
 
     // Updates once per frame
     void Update()
     {
-        Quit("IntroParkers", "WhoAreParkers", "ParkersAugmented", "EndScene");
+        if (Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape))
+        {
+            BackToMainMenu();
+        }
     }
 
     //Vuforia Scene
     void StartExperience()
     {
         StartExperiencePanel.SetActive(false);
-        EventManager.TriggerEvent("CheckFlyEvent");
+        EventManager.TriggerEvent("StartTimerOneAndVuforia");
+    }
+
+    void PeekExperience()
+    {
+        StartExperiencePanel.SetActive(false);
     }
 
     //IntroParkers Scene
@@ -62,9 +76,9 @@ public class SuperUIManager : MonoBehaviour
         {
             loadScene = true;
             anim.SetBool("IsPressed", true);
-            anim.Play("Pressed");
+            anim.Play("ButtonToGame");
             PlayerPrefs.DeleteKey("TotalScore");
-            StartCoroutine(FadeLevelIn(ToGame));
+            StartCoroutine(FadeLevelIn());
             StartCoroutine(LoadNewScene());
 
         }
@@ -74,7 +88,7 @@ public class SuperUIManager : MonoBehaviour
     void ReturnToMenu()
     {
         PlayerPrefs.DeleteKey("TotalScore");
-        StartCoroutine(FadeLevelIn(ReturnToMenu));
+        StartCoroutine(FadeLevelIn());
         SceneManager.LoadScene("IntroParkers");
     }
 
@@ -85,7 +99,7 @@ public class SuperUIManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            StartCoroutine(FadeLevelIn(OpenURL));
+            StartCoroutine(FadeLevelIn());
             SceneManager.LoadScene("WhoAreParkers");
         }
         else
@@ -120,44 +134,47 @@ public class SuperUIManager : MonoBehaviour
 
     }
 
-    void ToEndScene()
+    void ToPeekScene()
     {
-        StartCoroutine(FadeLevelIn(ToEndScene));
-        SceneManager.LoadScene("EndScene");
-    }
-
-    //All Scenes
-    void Quit(string mainMenu, string InfoParkers, string GameName, string EndScene)
-    {
-        if (Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape))
+        print("ToPeekScene");
+        if (loadScene == false)
         {
-            if (SceneManager.GetActiveScene().name == GameName)
-            {
-                SceneManager.LoadScene(mainMenu);
-            }
-            else if (SceneManager.GetActiveScene().name == InfoParkers)
-            {
-                SceneManager.LoadScene(mainMenu);
-            }
-            else if (SceneManager.GetActiveScene().name == EndScene)
-            {
-                SceneManager.LoadScene(mainMenu);
-            }
-            else
-            {
-                //Stops The Game
-                Application.Quit();
-            }
+            loadScene = true;
+            anim.SetBool("IsPeeked", true);
+            anim.Play("ButtonToPeek");
+            PlayerPrefs.DeleteKey("TotalScore");
+            StartCoroutine(FadeLevelIn());
+            SceneManager.LoadScene("PeekScene");
 
         }
     }
 
+    void ToEndScene()
+    {
+        StartCoroutine(FadeLevelIn());
+        SceneManager.LoadScene("EndScene");
+    }
 
-    IEnumerator FadeLevelIn(UnityAction DoLast)
+
+    //All Scenes
+    void BackToMainMenu()
+    {
+        if (SceneManager.GetActiveScene().name != "IntroParkers")
+        {
+            SceneManager.LoadScene("IntroParkers");
+        }
+        else
+        {
+            //Stops The Game
+            Application.Quit();
+        }
+    }
+
+
+    IEnumerator FadeLevelIn()
     {
         float fadeTime = GameObject.Find("Fade").GetComponent<Fade>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        DoLast();
     }
 
 }

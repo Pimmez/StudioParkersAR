@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class CheckTracking : MonoBehaviour{
 
-    private TrackableBehaviour mTrackableBehaviour;
-    private bool flyStatus = false;
     private ChangeFlyState flystate;
-
+    private bool gameIsStarted = false;
     [Space(10)]
 
     [Tooltip("The fly that is drawn on the canvas")]
@@ -19,10 +17,11 @@ public class CheckTracking : MonoBehaviour{
     public GameObject flyTarget;
 
     [Tooltip("StartExperiencePanel")]
-    public GameObject startExperience;
+    public GameObject uiPanelStartExperience;
 
     [Tooltip("Score / Counter")]
     public GameObject Score;
+
 
 
     void Start()
@@ -34,7 +33,7 @@ public class CheckTracking : MonoBehaviour{
 
     private void OnEnable()
     {
-        EventManager.StartListening("CheckFlyEvent", CheckFlyEvent);
+        EventManager.StartListening("StartTimerOneAndVuforia", ActivateVuforia);
         EventManager.StartListening("OnTrackingFound", OnTrackingFound);
         EventManager.StartListening("OnTrackingLost", OnTrackingLost);
         EventManager.StartListening("StartTheGame", StartTheGame);
@@ -42,15 +41,15 @@ public class CheckTracking : MonoBehaviour{
 
     private void OnDisable()
     {
-        EventManager.StopListening("CheckFlyEvent", CheckFlyEvent);
+        EventManager.StopListening("StartTimerOneAndVuforia", ActivateVuforia);
         EventManager.StopListening("OnTrackingFound", OnTrackingFound);
         EventManager.StopListening("OnTrackingLost", OnTrackingLost);
         EventManager.StopListening("StartTheGame", StartTheGame);
     }
 
-    void CheckFlyEvent()
+    void ActivateVuforia()
     {
-        if (startExperience.activeSelf == false)
+        if (uiPanelStartExperience.activeSelf == false)
         {
             VuforiaBehaviour.Instance.enabled = true;
         }
@@ -58,29 +57,35 @@ public class CheckTracking : MonoBehaviour{
 
     void OnTrackingFound()
     {
-        EventManager.TriggerEvent("TimerTrue");
+        print("***OnTrackingFound***");
+        if( gameIsStarted )
+        {
+            startFlyAndScore( true );
+            EventManager.TriggerEvent("TimerTrue");
+        }
+        
     }
 
     void OnTrackingLost()
     {
-        flyStatus = false;
-        Score.SetActive(false);
-        EventManager.TriggerEvent("TimerFalse");
+        if (gameIsStarted)
+        {
+            startFlyAndScore(false);
+            EventManager.TriggerEvent("TimerFalse");
+        }
     }
 
     void StartTheGame()
     {
-        flyStatus = true;
-        Score.SetActive(true);
-        CheckFly();
+        startFlyAndScore( true );
+        gameIsStarted = true;
     }
 
-    void CheckFly()
+    void startFlyAndScore( bool p_bool)
     {
-        if (flyStatus)
-        {
-            flystate.fly.enabled = true;
-            flystate.targetFly.SetActive(true);
-        }
+        print("***startFlyAndScore***: " + p_bool);
+        Score.SetActive(p_bool);
+        flystate.fly.enabled = p_bool;
+        flystate.targetFly.SetActive(p_bool);
     }
 }

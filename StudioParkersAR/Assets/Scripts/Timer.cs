@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
@@ -22,9 +20,11 @@ public class Timer : MonoBehaviour {
     [Tooltip("SmoothTime :: The Lower The Float The Smoother It Will Be.")]
     [SerializeField] private float smoothTime = 1f;
       
-    private Text textValue;
+    private Text gameTimerText;
     private float timerValue;
-    private bool isTiming, Timer1Bool, Timer2Bool;
+    private bool isTiming = false;
+    private bool isTimerOne = true;
+    private bool isTimerTwo = false;
     private SoundManager sound;
     private AudioSource audio;
     private float velocity;
@@ -34,24 +34,27 @@ public class Timer : MonoBehaviour {
         sound = FindObjectOfType<SoundManager>();
         audio = FindObjectOfType<AudioSource>();
         timerValue = timer1Value;
-        textValue = timer1Text;
+        gameTimerText = timer1Text;
         timerBalk.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
+        EventManager.StartListening("StartTimerOneAndVuforia", TimerTrue);
         EventManager.StartListening("TimerTrue", TimerTrue);
         EventManager.StartListening("TimerFalse", TimerFalse);
     }
 
     private void OnDisable()
     {
+        EventManager.StopListening("StartTimerOneAndVuforia", TimerTrue);
         EventManager.StopListening("TimerTrue", TimerTrue);
         EventManager.StopListening("TimerFalse", TimerFalse);
     }
 
     void Update()
     {
+        print("timer update " + isTiming );
         if (isTiming)
         {
             TimerValue();
@@ -82,24 +85,24 @@ public class Timer : MonoBehaviour {
 
         float sec = timerValue % 60;
 
-        textValue.text = string.Format("{1:0}", min, sec);
+        gameTimerText.text = string.Format("{1:0}", min, sec);
 
 
-        if (timerValue <= 0 && !Timer1Bool)
+        if (timerValue <= 0 && isTimerOne)
         {
             Destroy(timer1Text);
-            Timer2Bool = true;
+            isTimerTwo = true;
             timerValue = timer2Value;
-            textValue = timer2Text;
+            gameTimerText = timer2Text;
             EventManager.TriggerEvent("StartTheGame");
             timerBalk.gameObject.SetActive(true);
-            Timer1Bool = true;
+            isTimerOne = false;
             if (!audio.isPlaying)
             {
                 sound.PlayAudioIfNotPlaying(1);
             }
         }
-        else if (timerValue <= 0 && Timer2Bool)
+        else if (timerValue <= 0 && isTimerTwo)
         {
             Destroy(timer2Text);
             isTiming = false;

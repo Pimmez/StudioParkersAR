@@ -7,9 +7,16 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/IntroParkers.unity
+    guid: 2ebe6be28c8dd324ab49591c774071c6
   - enabled: 1
     path: Assets/Scenes/WhoAreParkers.unity
+    guid: c7ea0f1fe158b944ca25c068717c27ff
   - enabled: 1
     path: Assets/Scenes/ParkersAugmented.unity
+    guid: 980a34ff4d3e1924a90762a6e88e3792
+  - enabled: 1
+    path: Assets/Scenes/PeekScene.unity
+    guid: 41aa5b04a6cf3aa4cb3e0b5824e6373f
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
+    guid: ab9a57ebfe7fb66459b508c35835072e
